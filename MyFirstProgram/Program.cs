@@ -5,7 +5,7 @@ string userName = Console.ReadLine();
 
 Console.WriteLine("----------------------------------");
 
-Console.WriteLine($@"Hello {userName}, thank you for using my program to learn more about math on this beautifull {today.DayOfWeek}.
+Console.WriteLine($@"Hello {userName.ToUpper()}, thank you for using my program to learn more about math on this beautifull {today.DayOfWeek}.
 
 You will be asked nmath questions and there will be a score assigned at the end. Don't worry or stress yourself, treat this as an opportunity.");
 
@@ -18,36 +18,63 @@ Console.WriteLine($@"Please chose a game mode:
 3 - multiplication
 4 - division
 5 - random
-6 - chaos mode");
+6 - chaos mode
+");
 
 var gameSelected = Console.ReadLine();
 
-if (gameSelected == "1")
+switch (gameSelected.Trim().ToLower())
+{
+    case "1":
+        AdditionGame();
+        break;
+    case "2":
+        SubstractionGame();
+        break;
+    case "3":
+        MultiplicationGame();
+        break;
+    case "4":
+        DivisionGame();
+        break;
+    case "5":
+        RandomGame();
+        break;
+    case "6":
+        ChaosMode();
+        break;
+    default:
+        Console.WriteLine("Come again...");
+        Environment.Exit(1); 
+        break;
+}
+
+void AdditionGame()
 {
     Console.WriteLine("Addition game selected.");
 }
-else if (gameSelected == "2")
+
+void SubstractionGame()
 {
     Console.WriteLine("SuBsTrAcTiOn SeLeCtEd!");
 }
-else if (gameSelected == "3")
+
+void MultiplicationGame()
 {
     Console.WriteLine("Multiplication? WoW! Are you sure?");
 }
-else if (gameSelected == "4")
+
+void DivisionGame()
 {
     Console.WriteLine("D-D-D-D-Divisioooooon!");
 }
-else if (gameSelected == "5")
+
+void RandomGame()
 {
     Console.WriteLine("It's random time. Let's check your mettle. <evil grin>");
 }
-else if (gameSelected == "6")
+
+void ChaosMode()
 {
     Console.WriteLine("Mwahahaha. Mwahahahaha! Let's play.");
-}
-else
-{
-    Console.WriteLine("Come again...");
-    Environment.Exit(1);
 }
